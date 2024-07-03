@@ -1,25 +1,25 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
-const name = ref('John Doe');
-const status = ref('active');
-const tasks = ref(['Task One', 'Task Two', 'Task Three']);
-const newTask = ref('');
+const name = ref("Fahad kabir");
+const status = ref("active");
+const tasks = ref(["Task One", "Task Two", "Task Three"]);
+const newTask = ref("");
 
 const toggleStatus = () => {
-  if (status.value === 'active') {
-    status.value = 'pending';
-  } else if (status.value === 'pending') {
-    status.value = 'inactive';
+  if (status.value === "active") {
+    status.value = "pending";
+  } else if (status.value === "pending") {
+    status.value = "inactive";
   } else {
-    status.value = 'active';
+    status.value = "active";
   }
 };
 
 const addTask = () => {
-  if (newTask.value.trim() !== '') {
+  if (newTask.value.trim() !== "") {
     tasks.value.push(newTask.value);
-    newTask.value = '';
+    newTask.value = "";
   }
 };
 
@@ -29,11 +29,11 @@ const deleteTask = (index) => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
     const data = await response.json();
     tasks.value = data.map((task) => task.title);
   } catch (error) {
-    console.log('Error fetching tasks');
+    console.log("Error fetching tasks");
   }
 });
 </script>
